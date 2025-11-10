@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@plugin "daisyui" {
+    themes: light --default, dark --prefersdark, cupcake;
+}
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+
+/* 
+<input 
+onChange={(e)=>handleTheme(e.target.checked)}
+type='checkox'
+defaultChecked ={locationStorage.getItem{'theme'}==='dark'}
+claseName="toggle"/>
+
+
+
+*/
