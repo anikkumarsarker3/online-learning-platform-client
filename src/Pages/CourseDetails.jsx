@@ -18,7 +18,7 @@ const CourseDetails = () => {
     if (!course || loading) {
         return <p className='mt-22'><img src={ErrorPage} alt="" className='mx-auto max-h-[500px] p-3 rounded-2xl' /></p>
     }
-    const { title, image, price, duration, category, description } = course;
+    const { title, image, price, duration, category, description, created_by } = course;
     const handleEnrollCourse = () => {
         fetch(`https://learning-platform-server-theta.vercel.app/course/${id}`, {
             method: 'PATCH',
@@ -49,6 +49,10 @@ const CourseDetails = () => {
             title,
             image,
             price,
+            duration,
+            category,
+            description,
+            created_by,
             enroll_by: user.email
         }
 
