@@ -12,7 +12,7 @@ const Login = () => {
     const { createuserByGoogle, logIn } = use(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
-    console.log(location)
+    // console.log(location)
 
     useEffect(() => {
         AOS.init({
@@ -26,7 +26,7 @@ const Login = () => {
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(email, password)
+        // console.log(email, password)
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
         if (!passwordRegex.test(password)) {
             setErrorMsg("Password must have at least one uppercase, one lowercase letter, and be 6+ characters long.")
@@ -44,7 +44,7 @@ const Login = () => {
             })
             .catch(err => {
                 setErrorMsg(err.code);
-                console.log(errorMsg)
+                // console.log(errorMsg)
                 Swal.fire({
                     icon: "error",
                     title: "Invalid Login",

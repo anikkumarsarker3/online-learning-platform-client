@@ -9,7 +9,7 @@ const CourseDetails = () => {
     const { user, loading } = use(AuthContext);
     const [course, setCourse] = useState(null);
     const { id } = useParams();
-    console.log(id)
+    // console.log(id)
     useEffect(() => {
         fetch(`https://learning-platform-server-theta.vercel.app/courses/${id}`)
             .then(res => res.json())
@@ -31,7 +31,7 @@ const CourseDetails = () => {
             }),
         }).then(res => res.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 if (data.acknowledged) {
                     Swal.fire({
                         title: "Enroll successful,check Dashoard and Continue the course",

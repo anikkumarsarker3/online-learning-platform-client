@@ -19,7 +19,7 @@ const UpdateCourse = () => {
     if (loading || !course) {
         return <p>Loading...</p>
     }
-    console.log(course)
+    // console.log(course)
     const { title, image, price, duration, category, description } = course;
     const handleUpdateCourse = (e) => {
         e.preventDefault();
@@ -49,7 +49,7 @@ const UpdateCourse = () => {
 
         }).then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 if (data.success) {
                     Swal.fire({
                         title: "Update Successful!",

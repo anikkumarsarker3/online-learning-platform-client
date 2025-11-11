@@ -10,9 +10,7 @@ const Profile = () => {
         <div className='mt-20'>
             <div className=" bg-base-200 min-h-screen">
                 <div className="hero-content flex-col">
-                    {
-                        console.log(user.photoURL)
-                    }
+
                     <img
                         src={user?.photoURL}
                         className=" rounded-lg shadow-2xl"

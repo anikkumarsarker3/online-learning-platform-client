@@ -18,7 +18,7 @@ const AddCourse = () => {
         const category = e.target.category.value;
         const description = e.target.description.value;
         const created_by = e.target.created_by.value;
-        console.log(title, image, price, duration, category, description, created_by);
+        // console.log(title, image, price, duration, category, description, created_by);
         const newCourse = {
             title,
             image,
@@ -38,7 +38,7 @@ const AddCourse = () => {
 
         }).then(res => res.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 if (data.insertedId) {
                     Swal.fire({
                         title: "Login successful",
