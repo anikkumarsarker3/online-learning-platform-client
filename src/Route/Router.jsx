@@ -20,6 +20,7 @@ import Loader from '../Pages/Loader';
 export const router = createBrowserRouter([
     {
         path: '/',
+        // hydrateFallbackElement: <Loader></Loader>,
         element: <RootLayout></RootLayout>,
         errorElement: <img src={ErrorPage} alt="" className='mx-auto max-h-[500px] p-3 rounded-2xl' />,
         children: [

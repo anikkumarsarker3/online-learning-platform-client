@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { BsTwitterX } from "react-icons/bs";
 import { FaFacebookF, FaLinkedinIn, FaGithub } from "react-icons/fa";
 import Logo from '../assets/technicLogo.png'
-
 const Footer = () => {
     return (
         <footer className=" text-gray-300 mt-20">
@@ -13,9 +12,10 @@ const Footer = () => {
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
+                    className="text-center"
                 >
-                    <div className="text-2xl font-bold text-white mb-3 flex items-center gap-3">
-                        <img src={Logo} alt="" className="w-12 rounded-full" />
+                    <div className="text-2xl font-bold text-white mb-3">
+                        <img src={Logo} alt="" className="w-12 rounded-full mx-auto mb-2" />
 
                         <h2>Technic Academy</h2>
                     </div>
