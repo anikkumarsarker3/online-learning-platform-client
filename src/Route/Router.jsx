@@ -21,7 +21,6 @@ export const router = createBrowserRouter([
     {
         path: '/',
         element: <RootLayout></RootLayout>,
-
         errorElement: <img src={ErrorPage} alt="" className='mx-auto max-h-[500px] p-3 rounded-2xl' />,
         children: [
             {
@@ -45,9 +44,6 @@ export const router = createBrowserRouter([
                 element: <PrivateRouter>
                     <CourseDetails></CourseDetails>
                 </PrivateRouter>,
-                // loader: ({ params }) => {
-                //     // fetch(`https://learning-platform-server-theta.vercel.app/courses/${params.id}`)
-                // }
             },
         ]
 

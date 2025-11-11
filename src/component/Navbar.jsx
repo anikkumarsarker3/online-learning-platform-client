@@ -116,8 +116,6 @@ const Navbar = () => {
         }
 
 
-
-        {/* 'https://i.ibb.co.com/wFVLngdz/rkwts2-B46tk-H.jpg' */}
         <div onClick={() => navigate('/dashboard/profile')} className="cursor-pointer hidden md:block">
             {
                 user &&
@@ -143,9 +141,7 @@ const Navbar = () => {
             className="toggle"
         />
     </>
-    // if (loading) {
-    //     return <p>Loading..</p>
-    // }
+
 
     return (
         <nav className="bg-white shadow-md fixed top-0 left-0 w-full z-50">

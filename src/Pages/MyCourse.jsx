@@ -23,6 +23,7 @@ const MyCourse = () => {
     }
     return (
         <div className='mt-22'>
+            <h1 className='text-3xl font-bold text-center my-7'>My Courses</h1>
             {
                 !courses.length && <div><img src={CourseNo} alt="" className='mx-auto w-72 sm:w-1/2' /></div>
             }

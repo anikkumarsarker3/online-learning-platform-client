@@ -2,8 +2,7 @@ import React, { use, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { AuthContext } from '../Context/AuthContext';
 import Swal from 'sweetalert2';
-import { MdOutlineCategory } from 'react-icons/md';
-import { AiTwotoneDollar } from 'react-icons/ai';
+import ErrorPage from '../assets/ErrorPage.png'
 
 const CourseDetails = () => {
     const navigate = useNavigate()
@@ -17,7 +16,7 @@ const CourseDetails = () => {
             .then(data => setCourse(data))
     }, [id])
     if (!course || loading) {
-        return <p>Loading...</p>
+        return <p className='mt-22'><img src={ErrorPage} alt="" className='mx-auto max-h-[500px] p-3 rounded-2xl' /></p>
     }
     const { title, image, price, duration, category, description } = course;
     const handleEnrollCourse = () => {
