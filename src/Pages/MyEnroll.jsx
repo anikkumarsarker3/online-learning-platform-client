@@ -16,7 +16,7 @@ const MyEnroll = () => {
             .then(data => setEnCourse(data))
     }, [user])
     if (!enCourse || loading) {
-        return <p>Loading..</p>
+        return <p className='mt-24 text-center'><span className="loading loading-spinner text-info"></span></p>
     }
     return (
         <div className='mt-24'>

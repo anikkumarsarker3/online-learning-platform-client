@@ -17,21 +17,21 @@ const MyCourse = () => {
                 .catch(err => console.error("Fetch error:", err));
         }
     }, [user, loading]);
-    if (courses == null || loading) {
-        return <p>Loading...</p>
+    if (!courses || loading) {
+        return <p className='mt-24 text-center'><span className="loading loading-spinner text-info"></span></p>
     }
     return (
         <div className='mt-24'>
             <title>My Course</title>
             <h1 className='text-3xl font-bold text-center my-7'>My Courses</h1>
             {
-                !courses.length && <div><img src={CourseNo} alt="" className='mx-auto w-72 sm:w-1/2' /></div>
+                !courses.length ? <div><img src={CourseNo} alt="" className='mx-auto w-72 sm:w-1/2' /></div> : <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {
+                        courses.map(course => <MyCourseCard course={course}></MyCourseCard>)
+                    }
+                </div>
             }
-            <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                {
-                    courses.map(course => <MyCourseCard course={course}></MyCourseCard>)
-                }
-            </div>
+
         </div>
     );
 };
