@@ -1,15 +1,17 @@
 import React, { Suspense, use, useEffect, useState } from 'react';
 import Cards from '../component/Cards';
 import { AuthContext } from '../Context/AuthContext';
-import CourseNo from '../assets/CourseNotFound.png'
+import CourseNo from '../assets/CourseNotFound.png';
 import { Link } from 'react-router';
 
-
 const Courses = () => {
-    const { user, loading } = use(AuthContext)
-    const [allCourses, setAllCourses] = useState(null);
-    const [courses, setCourses] = useState(null);
+    const { user, loading } = use(AuthContext);
+    const [allCourses, setAllCourses] = useState([]);
+    const [courses, setCourses] = useState([]);
     const [category, setCategory] = useState("");
+    const [filterLoading, setFilterLoading] = useState(false);
+
+    // Fetch all courses
     useEffect(() => {
         if (!loading && user?.accessToken) {
             fetch(`https://learning-platform-server-theta.vercel.app/courses`, {
@@ -24,19 +26,24 @@ const Courses = () => {
     }, [user, loading]);
 
     useEffect(() => {
-        if (category === "") {
-            setCourses(allCourses);
-        } else if (Array.isArray(allCourses)) {
-            const filtered = allCourses.filter(
-                (course) => course.category === category
-            );
-            setCourses([...filtered]);
-        }
+        if (!Array.isArray(allCourses)) return;
+
+        setFilterLoading(true);
+        const timer = setTimeout(() => {
+            if (category === "") {
+                setCourses(allCourses);
+            } else {
+                const filtered = allCourses.filter(course => course.category === category);
+                setCourses(filtered);
+            }
+            setFilterLoading(false);
+        }, 500);
+
+        return () => clearTimeout(timer);
     }, [allCourses, category]);
 
     if (loading || !user) {
         return <div className='mt-24 max-w-7xl '>
-            {/* <p>Loading...ppp</p> */}
             <div>
                 <img src={CourseNo} alt="" className='mx-auto w-72 sm:w-1/2' />
                 <Link to='/login'>
@@ -45,22 +52,22 @@ const Courses = () => {
             </div>
         </div>
     }
-    if (!courses || !allCourses) {
-        return <p className='mt-24 text-center'><span className="loading loading-spinner text-info"></span></p>
+    if (!allCourses) {
+        return <p className="mt-24 text-center"><span className="loading loading-spinner text-info"></span></p>;
     }
 
-
     return (
-        <div className='mt-24 max-w-7xl '>
+        <div className="mt-24 max-w-7xl mx-auto">
             <title>All course</title>
-            <h1 className='text-center text-4xl font-bold my-5'>All Courses</h1>
-            <div class="sm:w-1/3 text-center mx-auto p-2">
+            <h1 className="text-center text-4xl font-bold my-5">All Courses</h1>
+
+            <div className="sm:w-1/3 text-center mx-auto p-2">
                 <select
                     id="category"
                     name="category"
                     required
                     onChange={(e) => setCategory(e.target.value)}
-                    class="w-full border-2 border-gray-300 rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:border-blue-500"
+                    className="w-full border-2 border-gray-300 rounded-lg px-3 py-2 text-gray-800 focus:outline-none focus:border-blue-500"
                 >
                     <option value="">Search by category...</option>
                     <option value="Web Development">Web Development</option>
@@ -71,24 +78,33 @@ const Courses = () => {
                     <option value="Computer Science">Computer Science</option>
                     <option value="Security">Security</option>
                 </select>
-
-
             </div>
-            {
-                !courses.length ?
-                    <div className='max-w-7xl '>
-                        <div><img src={CourseNo} alt="" className='mx-auto w-72 sm:w-1/2' /></div>
-                    </div> : <div className='mx-auto mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-2'>
-                        <Suspense fallback={<span className="loading loading-spinner text-info"></span>}>
-                            {
-                                courses.map(course => <Cards key={course._id} course={course}></Cards>)
-                            }
-                        </Suspense>
 
-                    </div >
+            {/* 🔹 Spinner when filtering */}
+            {filterLoading && (
+                <p className="mt-10 text-center">
+                    <span className="loading loading-spinner text-info"></span>
+                </p>
+            )}
 
-            }
-
+            {/* Course grid */}
+            {!filterLoading && (
+                <>
+                    {!courses.length ? (
+                        <div className="max-w-7xl">
+                            <img src={CourseNo} alt="No courses" className="mx-auto w-72 sm:w-1/2" />
+                        </div>
+                    ) : (
+                        <div className="mx-auto mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-2">
+                            <Suspense fallback={<span className="loading loading-spinner text-info"></span>}>
+                                {courses.map(course => (
+                                    <Cards key={course._id} course={course} />
+                                ))}
+                            </Suspense>
+                        </div>
+                    )}
+                </>
+            )}
         </div>
     );
 };
