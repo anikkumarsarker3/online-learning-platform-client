@@ -79,7 +79,7 @@ const UpdateCourse = () => {
 
 
     return (
-        <div className='mt-22'>
+        <div className='mt-24'>
             <div class="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-2xl mx-auto">
                 <h2 class="text-3xl font-bold text-center text-blue-900 mb-8">Update Course</h2>
 

@@ -19,7 +19,8 @@ const MyEnroll = () => {
         return <p>Loading..</p>
     }
     return (
-        <div className='mt-22'>
+        <div className='mt-24'>
+            <title>My Enroll</title>
             <div>
                 {
                     !enCourse.length ? <div>

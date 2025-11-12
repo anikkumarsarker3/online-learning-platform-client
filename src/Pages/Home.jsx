@@ -8,6 +8,7 @@ const corusePromise = fetch('https://learning-platform-server-theta.vercel.app/p
 const Home = () => {
     return (
         <div className='max-w-7xl mx-auto'>
+            <title>Home</title>
             <HeroSection></HeroSection>
             <div>
                 <PopularCourses corusePromise={corusePromise}></PopularCourses>

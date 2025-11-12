@@ -7,7 +7,8 @@ const Profile = () => {
         return <p>Loading...</p>
     }
     return (
-        <div className='mt-20'>
+        <div className='mt-24'>
+            <title>Profile</title>
             <div className=" bg-base-200 min-h-screen">
                 <div className="hero-content flex-col">
 

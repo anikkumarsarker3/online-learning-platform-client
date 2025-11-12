@@ -4,7 +4,7 @@ import bannerCover from '../assets/BannerCover.jpg'
 
 const HeroSection = () => {
     return (
-        <section className="bg-gradient-to-r from-blue-50 to-blue-100 mt-22 rounded-lg">
+        <section className="bg-gradient-to-r from-blue-50 to-blue-100 mt-24 rounded-lg">
             <div className=" flex flex-col md:flex-row items-center justify-between px-6 py-20">
                 <motion.div
                     className="md:w-1/2"

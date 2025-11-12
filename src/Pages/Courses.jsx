@@ -7,8 +7,8 @@ import { Link } from 'react-router';
 
 const Courses = () => {
     const { user, loading } = use(AuthContext)
-    const [allCourses, setAllCourses] = useState(null);
-    const [courses, setCourses] = useState(null);
+    const [allCourses, setAllCourses] = useState([]);
+    const [courses, setCourses] = useState([]);
     const [category, setCategory] = useState("");
     useEffect(() => {
         if (!loading && user?.accessToken) {
@@ -28,15 +28,17 @@ const Courses = () => {
             setCourses(allCourses);
         } else if (Array.isArray(allCourses)) {
             const filtered = allCourses.filter(
-                (course) => course.category === category
+                (course) => course.category == category
             );
             setCourses([...filtered]);
         }
     }, [allCourses, category]);
+    if (loading || !user || !allCourses) {
+        return <p className='mt-24 text-center'><span className="loading loading-spinner text-info"></span></p>
+    }
 
-
-    if (!allCourses || loading || !courses) {
-        return <div className='mt-22 max-w-7xl '>
+    if (!courses) {
+        return <div className='mt-24 max-w-7xl '>
             {/* <p>Loading...ppp</p> */}
             <div>
                 <img src={CourseNo} alt="" className='mx-auto w-72 sm:w-1/2' />
@@ -47,9 +49,10 @@ const Courses = () => {
         </div>
     }
 
-    // console.log(courses)
+
     return (
-        <div className='mt-22 max-w-7xl '>
+        <div className='mt-24 max-w-7xl '>
+            <title>All course</title>
             <h1 className='text-center text-4xl font-bold my-5'>All Courses</h1>
             <div class="sm:w-1/3 text-center mx-auto p-2">
                 <select

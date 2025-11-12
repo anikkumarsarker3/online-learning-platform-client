@@ -2,7 +2,6 @@ import React, { use, useEffect, useState } from 'react';
 import { AuthContext } from '../Context/AuthContext';
 import MyCourseCard from '../component/MyCourseCard';
 import CourseNo from '../assets/CourseNotFound.png'
-
 const MyCourse = () => {
     const { user, loading } = use(AuthContext)
     const [courses, setCourses] = useState(null);
@@ -22,7 +21,8 @@ const MyCourse = () => {
         return <p>Loading...</p>
     }
     return (
-        <div className='mt-22'>
+        <div className='mt-24'>
+            <title>My Course</title>
             <h1 className='text-3xl font-bold text-center my-7'>My Courses</h1>
             {
                 !courses.length && <div><img src={CourseNo} alt="" className='mx-auto w-72 sm:w-1/2' /></div>
@@ -35,5 +35,4 @@ const MyCourse = () => {
         </div>
     );
 };
-
 export default MyCourse;

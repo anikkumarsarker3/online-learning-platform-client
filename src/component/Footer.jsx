@@ -4,7 +4,7 @@ import { FaFacebookF, FaLinkedinIn, FaGithub } from "react-icons/fa";
 import Logo from '../assets/technicLogo.png'
 const Footer = () => {
     return (
-        <footer className=" text-gray-300 mt-20">
+        <footer className=" text-gray-300 mt-24">
             {/* Full-width background */}
             <div className="px-6 py-10 grid grid-cols-1  md:grid-cols-3 gap-10">
                 {/* Left Section */}

@@ -1,10 +1,8 @@
 import React from 'react';
 import Navbar from '../component/Navbar';
 import { Outlet } from 'react-router';
-import PopularCourses from '../component/PopularCourses';
-import WhyChooseUs from '../component/WhyChooseUs';
-import TopInstructors from '../component/TopInstructors';
 import Footer from '../component/Footer';
+
 
 const RootLayout = () => {
     return (

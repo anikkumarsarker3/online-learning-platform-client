@@ -16,7 +16,7 @@ const CourseDetails = () => {
             .then(data => setCourse(data))
     }, [id])
     if (!course || loading) {
-        return <p className='mt-22'><img src={ErrorPage} alt="" className='mx-auto max-h-[500px] p-3 rounded-2xl' /></p>
+        return <p className='mt-24'><img src={ErrorPage} alt="" className='mx-auto max-h-[500px] p-3 rounded-2xl' /></p>
     }
     const { title, image, price, duration, category, description, created_by } = course;
     const handleEnrollCourse = () => {
@@ -67,7 +67,8 @@ const CourseDetails = () => {
 
 
     return (
-        <div className='mt-20'>
+        <div className='mt-24'>
+            <title>Course-details</title>
             <div className="bg-base-200 min-h-screen">
                 <div className="hero-content flex-col lg:flex-row gap-7">
                     <img
