@@ -120,7 +120,7 @@ const Navbar = () => {
             {
                 user &&
                 <img src={user?.photoURL}
-                    onError={(e) => (e.target.src = OtherProfile)} alt="" className="w-10 rounded-full" />
+                    onError={(e) => (e.target.src = OtherProfile)} alt="" className="w-10 h-10 rounded-full" />
 
             }
         </div>
