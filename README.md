@@ -1,3 +1,6 @@
+#  Live: https://earnest-arithmetic-3e235b.netlify.app/
+
+
 # 🎓 Learning Platform Frontend
 
 A modern **React.js** frontend for an online learning platform that enables users to browse, enroll, and manage courses.  
